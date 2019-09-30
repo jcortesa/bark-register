@@ -14,9 +14,10 @@ do
     AUDIO_FILE=$EXTRACTED_AUDIO_DIR/$VIDEO_FILE.mp3
 
     echo "Extracting $VIDEO_FILE..."
-    ffmpeg -i $VIDEO_FILE -vn $AUDIO_FILE 2>&1 | tee -a $EXTRACTED_AUDIO_DIR/ffmpeg.log
+    ffmpeg -i $VIDEO_FILE -vn $AUDIO_FILE </dev/null > /dev/null 2>&1 &
     echo file \'`echo $VIDEO_FILE.mp3`\' >> $FILE_LIST
 done
+wait
 
 echo "Merging audios..."
 ffmpeg -f concat -i $FILE_LIST $MERGED_AUDIO_FILE 2>&1 | tee -a $EXTRACTED_AUDIO_DIR/ffmpeg.log
