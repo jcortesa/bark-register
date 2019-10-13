@@ -20,7 +20,17 @@ function generate_destination_dir () {
 
 DESTINATION_DIR=`generate_destination_dir "$SOURCE_VIDEOS_DIR"`
 
-EXTRACTED_AUDIO_DIR=extracted_audio
+function copy_videos () {
+	for VIDEO_FILE in $SOURCE_VIDEOS_DIR/*.MP4
+	do
+		cp "$VIDEO_FILE" "$DESTINATION_DIR/"
+	done
+}
+
+copy_videos
+cd "$DESTINATION_DIR"
+
+EXTRACTED_AUDIO_DIR=$DESTINATION_DIR/extracted_audio
 MERGED_AUDIO_FILE=$EXTRACTED_AUDIO_DIR/${PWD##*/}-merged_audio.mp3
 FILE_LIST=$EXTRACTED_AUDIO_DIR/${PWD##*/}-files.txt
 WAVE_IMAGE_FILE=$EXTRACTED_AUDIO_DIR/${PWD##*/}-wave.png
