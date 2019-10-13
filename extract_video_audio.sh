@@ -38,5 +38,12 @@ function generate_wave_pic () {
 	echo "Sound waves pic created!"
 }
 
-extract_audio "$1"
+function check_results () {
+	# TODO: check for open and Audacity. Currently this is compatible only with MacOS
+	open $MERGED_AUDIO_FILE -a /Applications/Audacity.app
+	open $WAVE_IMAGE_FILE
+}
+
+extract_audio
 generate_wave_pic
+check_results
