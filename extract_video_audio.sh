@@ -1,6 +1,24 @@
 #!/bin/bash
-DESTIONATION_DIR="$1"
-cd $DESTIONATION_DIR
+
+SOURCE_VIDEOS_DIR="$1"
+
+cd "$SOURCE_VIDEOS_DIR"
+
+RECORDINGS_ROOT="/Users/jorgecortes/Downloads/grabaciones_perros"
+
+function generate_destination_dir () {
+	FIRST_FILE=`ls | head -n 1`
+
+	YEAR="${FIRST_FILE:0:4}"
+	MONTH="${FIRST_FILE:5:2}"
+	DAY="${FIRST_FILE:7:2}"
+
+	DESTINATION_DIR="$RECORDINGS_ROOT/$YEAR/$MONTH/$YEAR$MONTH$DAY"
+	mkdir -p "$DESTINATION_DIR"
+	echo $DESTINATION_DIR
+}
+
+DESTINATION_DIR=`generate_destination_dir "$SOURCE_VIDEOS_DIR"`
 
 EXTRACTED_AUDIO_DIR=extracted_audio
 MERGED_AUDIO_FILE=$EXTRACTED_AUDIO_DIR/${PWD##*/}-merged_audio.mp3
