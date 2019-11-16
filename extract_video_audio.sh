@@ -28,6 +28,13 @@ function copy_videos () {
 }
 
 copy_videos
+
+
+SOURCE_DISK=`df -P $SOURCE_VIDEOS_DIR | tail -1 | cut -d' ' -f 1`
+# @todo make disk unmount unix friendly
+diskutil unmount $SOURCE_DISK
+
+###################################################################
 cd "$DESTINATION_DIR"
 
 EXTRACTED_AUDIO_DIR=$DESTINATION_DIR/extracted_audio
