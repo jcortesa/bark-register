@@ -1,4 +1,4 @@
-Use as follows:
+#Usage
 
 First time, assign execution permissions:
 
@@ -16,3 +16,24 @@ It will generate inside the `<video_files_directory>` a new folder named `extrac
 
 - `xxx_merged_audio.mp3`: a complete audio extract from the video source
 - `xxx_wave.png`: a wave diagram that can be used to see if there are any hight volume noises (barks) in the audio extract
+
+#Dependencies
+* MacOS-like
+	** `rsync`
+	** `ffmpeg`
+	** `diskutil`
+	** `open`
+	** `audacity`
+
+* UNIX-like
+	** `cd`
+	** `ls`
+	** `head`
+	** `mkdir`
+	** `echo`
+	** `cp`
+	** `df`
+	** `tail`
+	** `cut`
+	** `rm`
+
