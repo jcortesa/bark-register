@@ -82,5 +82,5 @@ extract_audio
 generate_wave_pic
 check_results
 
-BACKUP_DESTINATION="pi@raspserver.local:/media/X-WING/grabaciones_perros/"
+BACKUP_DESTINATION="pi@raspserver.local:/media/X-WING/"
 rsync -avzP --exclude=.DS_Store -e "ssh -p 50123" $RECORDINGS_ROOT $BACKUP_DESTINATION
