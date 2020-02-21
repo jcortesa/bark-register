@@ -17,10 +17,17 @@ It will generate inside the `<video_files_directory>` a new folder named `extrac
 - `xxx_merged_audio.mp3`: a complete audio extract from the video source
 - `xxx_wave.png`: a wave diagram that can be used to see if there are any hight volume noises (barks) in the audio extract
 
+# Compress script
+
+```sh
+nohup /home/pi/compress-avconv-videos-mp4.sh 2> foo.err < /dev/null &
+```
+
 #Dependencies
 * MacOS-like
 	** `rsync`
 	** `ffmpeg`
+	** `avconv` (a `ffmpeg` fork)
 	** `diskutil`
 	** `open`
 	** `audacity`
