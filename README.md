@@ -20,7 +20,7 @@ It will generate inside the `<video_files_directory>` a new folder named `extrac
 # Compress script
 
 ```sh
-nohup /home/pi/compress-avconv-videos-mp4.sh 2> foo.err < /dev/null &
+nohup /home/pi/compress-avconv-videos-mp4.sh . 2> foo.err < /dev/null &
 ```
 
 #Dependencies
