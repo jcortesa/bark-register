@@ -10,20 +10,20 @@ do
 
         if [[ "${VIDEO}" == *"${COMPRESSED_SUFFIX}"* ]]; then
                 COMPRESSED="${VIDEO}"
-                echo "${VIDEO} already compressed"
+                echo "$(date +"%Y%m%d_%H%M"): ${VIDEO} already compressed"
         fi
 
         if [ -f "$COMPRESSED" ]; then
                 COMPRESSED_VIDEO_LENGTH=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$COMPRESSED")
 
                 if [ ! "$VIDEO_LENGTH" = "$COMPRESSED_VIDEO_LENGTH"  ]; then
-                        echo going to remove "${COMPRESSED}"
+                        echo "$(date +"%Y%m%d_%H%M"): going to remove ${COMPRESSED}"
                         rm "$COMPRESSED"
                 fi
         fi
 
         if [ ! -f "$COMPRESSED" ]; then
-               echo going to compress "${VIDEO}"
+               echo "$(date +"%Y%m%d_%H%M"): going to compress ${VIDEO}"
                ffmpeg -i "$VIDEO" \
                         -c:v libx264 \
                         -preset veryfast \
@@ -37,7 +37,7 @@ do
                         COMPRESSED_VIDEO_LENGTH=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$COMPRESSED")
 
                         if [  "$VIDEO_LENGTH" = "$COMPRESSED_VIDEO_LENGTH"  ]; then
-                                echo going to remove "${VIDEO}"
+                                echo "$(date +"%Y%m%d_%H%M"): going to remove ${VIDEO}"
                                 rm "$VIDEO"
                         fi
                 fi
