@@ -29,10 +29,13 @@ function copy_videos () {
 
 copy_videos
 
+function unmount_source_disk () {
+	SOURCE_DISK=`df -P $1 | tail -1 | cut -d' ' -f 1`
+	# @todo make disk unmount unix friendly
+	diskutil unmount $SOURCE_DISK
+}
 
-SOURCE_DISK=`df -P $SOURCE_VIDEOS_DIR | tail -1 | cut -d' ' -f 1`
-# @todo make disk unmount unix friendly
-diskutil unmount $SOURCE_DISK
+unmount_source_disk $SOURCE_VIDEOS_DIR
 
 ###################################################################
 cd "$DESTINATION_DIR"
